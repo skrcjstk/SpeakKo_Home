@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}LevelTest{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="leveltest" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec1" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Level Test</h1>
+        <p class="lead">Check your Korean speaking skill!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+  Noting!
+{% endblock scripts %}

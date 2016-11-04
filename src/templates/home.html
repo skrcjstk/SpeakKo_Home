@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
+<a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>{% include "_brandname.html" %}</h1>
+          <p>Fully experienced teacher makes your Korean better.</p>
+	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a name="about"></a>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>SpeakKo has issued by CNN news</h2>
+      <p>SpeakKo has issued by CNN news on last month, and customers rushed to their homepage to apply prior tests. Then their server exploded, but they restored and started their education service again. Now ... </p>
+      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>Clinton, Trump make their closing arguments</h2>
+      <p>Hillary Clinton and Donald Trump have a simple closing argument for voters: A loss in Tuesday's election would be catastrophic. With four days remaining before the election, the White House rivals ...</p>
+      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>Unilateral humanitarian pause in Aleppo begins</h2>
+      <p>A 10-hour humanitarian pause in the besieged Syrian city of Aleppo was set to get under way Friday, but doubts remain whether it will be effective.
+      The pause, which was to begin at ...</p>
+      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
+

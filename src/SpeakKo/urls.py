@@ -9,11 +9,22 @@ import debug_toolbar
 
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
-    url(r'^about/$', views.AboutPage.as_view(), name='about'),
-    url(r'^leveltest/$', views.LevelTestPage.as_view(), name='leveltest'),
-    url(r'^course/$', views.CoursePage.as_view(), name='course'),
-    url(r'^registration/$', views.RegistrationPage.as_view(), name='registration'),
+    url(r'^lookaround/$', views.LookAroundPage.as_view(), name='lookaround'),
+    
+	url(r'^courseall/$', views.CourseAllPage.as_view(), name='courseall'),
+	url(r'^content/$', views.ContentPage.as_view(), name='content'),
+	url(r'^teacher/$', views.TeacherPage.as_view(), name='teacher'),
 
+    url(r'^registration/$', views.RegistrationPage.as_view(), name='registration'),
+    url(r'^leveltest/$', views.LevelTestPage.as_view(), name='leveltest'),
+    url(r'^tuition/$', views.TuitionPage.as_view(), name='tuition'),
+
+    url(r'^notification/$', views.NotificationPage.as_view(), name='notification'),
+    url(r'^event/$', views.EventPage.as_view(), name='event'),
+    url(r'^faq/$', views.FAQPage.as_view(), name='faq'),
+    url(r'^inquiry/$', views.InquiryPage.as_view(), name='inquiry'),
+
+	url(r'^about/$', views.AboutPage.as_view(), name='about'),
 
     url(r'^users/', include(profiles.urls, namespace='profiles')),
     url(r'^admin/', include(admin.site.urls)),

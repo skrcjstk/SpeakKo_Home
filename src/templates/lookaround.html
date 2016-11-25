@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Registration{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="registration" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec1" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Look Around</h1>
+        <p class="lead">Do you want to register?</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+  Noting!
+{% endblock scripts %}

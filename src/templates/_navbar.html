@@ -1,5 +1,42 @@
-<li {% if active_link == "home" %}class="active"{% endif %}><a href="{% url 'home' %}">Home</a></li>
-<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'leveltest' %}">LevelTest</a></li>
-<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'course' %}">Course</a></li>
-<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'registration' %}">Registration</a></li>
-<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'about' %}">AboutUs</a></li>
+<li {% if active_link == "lookaround" %}class="active"{% endif %}><a href="{% url 'lookaround' %}">둘러보기</a></li>
+
+<li {% if active_link == "course" %}class="dropdown"{% endif %}>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">과정안내<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+		<li><a href="{% url 'courseall' %}">전체코스</a></li>
+		<li><a href="{% url 'content' %}">컨텐츠</a></li>
+	    <li><a href="{% url 'teacher' %}">선생님</a></li>
+  </ul>
+</li>
+
+<li {% if active_link == "courseRegistration" %}class="dropdown"{% endif %}>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">학습등록<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+		<li><a href="{% url 'registration' %}">학습신청</a></li>
+	    <li><a href="{% url 'leveltest' %}">레벨테스트</a></li>
+	    <li><a href="{% url 'tuition' %}">수강료</a></li>
+  </ul>
+</li>
+
+<li {% if active_link == "community" %}class="dropdown"{% endif %}>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+		<li><a href="{% url 'notification' %}">공지사항</a></li>
+	    <li><a href="{% url 'event' %}">이벤트</a></li>
+	    <li><a href="{% url 'faq' %}">FAQ</a></li>
+	    <li><a href="{% url 'inquiry' %}">문의하기</a></li>
+  </ul>
+</li>
+
+<!--
+<li {% if active_link == "mypage" %}class="dropdown"{% endif %}>
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">마이페이지<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+		<li><a href="#">등록정보</a></li>
+	    <li><a href="#">학습통계</a></li>
+	    <li><a href="#">회원정보</a></li>
+  </ul>
+</li>
+-->
+
+<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'about' %}">SpeakKo소개</a></li>

@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <h1>{% include "_brandname.html" %}</h1>
-        <p class="lead">Course Information</p>
+        <p class="lead">Teacher Information</p>
       </div>
     </div>
   </div>
@@ -23,23 +23,15 @@
 {% endblock container %}
 
 {% block scripts %}
-
 <div class="albums-container container-fluid">
   <div class="row">
-{% if all_subjects %}
-    {% for subject in all_subjects %}
-      <div class="col-sm-4 col-lg-3">
+  {% if all_teachers %}
+    {% for teacher in all_teachers %}
+      <div class="col-sm-4 col-lg-4">
         <div class="thumbnail">
-          <!-- <a href="{% url 'course:detail' subject.id %}"> -->
-          <img src="{{ subject.class_logo }}" class="img-responsive" width="500px">
+          <img src="{{ teacher.picture }}" width="500px">
           <div class="caption">
-            <h1>{{ subject.class_title }}</h1>
-            {% if subject.class_level == 0 %}
-              <h3>과목 레벨: 초급</h3>
-            {% elif subject.class_level == 1%}
-              <h3>과목 레벨: 중급</h3>
-            {% endif %}
-            <a href="{% url 'course:detail' subject.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+            <h2>{{ teacher.eng_name }} ({{ teacher.name }}) </h2>
           </div>
         </div>
       </div>
@@ -47,8 +39,9 @@
 {% else %}
   <h2> Coming soon</h2>
 {% endif%}
-
 </div>
 </div>
 {% endblock scripts %}
+
+
 

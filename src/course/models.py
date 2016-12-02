@@ -10,15 +10,16 @@ class Subject(models.Model):
     class_level = models.IntegerField(default=0)
     class_category = models.CharField(max_length=50)
 
-
-
-
-
-
-
-    #def get_absolute_url(self):
-    #   return reverse('course:index', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+       return reverse('course:detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.class_title
 
+class Teacher(models.Model):
+    name = models.CharField(max_length=100)
+    eng_name = models.CharField(max_length=100)
+    picture = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name

@@ -1,38 +1,44 @@
 from django.views import generic
-from django.http import HttpResponse
-#from django.contrib.auth import get_user_model
-from . import models
-from django.template import loader
-
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Subject
+from .models import Teacher
 
 
-def index(request):
-    all_subject = Subject.objects.all()
-    template =loader.get_template('course/index.html')
-    context = {'all_subject': all_subject}
-
-
-
-    #for subject in all_subject:
-    #    url = '/course/' + str(subject.id) + '/'
-    #    html += '<a href="' + url + '">' + subject.class_title + '</a><br>'
-    return HttpResponse(template.render(context, request))
-
-
-
-
-
-
-class IndexView(generic.TemplateView):
+class IndexView(generic.ListView):
     template_name = "course/index.html"
-    #def get_queryset(self):
-    #    return BaseCourse.objects.all()
+    context_object_name = "all_subjects"
+    def get_queryset(self):
+        return Subject.objects.all()
 
-#def detail(request, class_id):
-#    return HttpResponse("<h2> Details for Class id: " + str(class_id) + " </h2>")
-
-class DetailView(generic.TemplateView):
-#    #model = BaseCourse
+class DetailView(generic.DeleteView):
+    model = Subject
     template_name = 'course/detail.html'
+
+class TeacherIndexView(generic.ListView):
+    template_name = "course/teacher.html"
+    context_object_name = "all_teachers"
+
+    def get_queryset(self):
+        return Teacher.objects.all()
+
+
+
+
+
+
+
+
+
+
+
+
+    # from django.shortcuts import render, get_object_or_404
+
+    # def index(request):
+    #    all_subject = Subject.objects.all()
+    #    context = {'all_subject': all_subject}
+    #    return render(request, 'course/index.html', context)
+
+    # def detail(request, class_id):
+    #    subject = get_object_or_404(Subject, pk=class_id) # class id 가 없으면 error messaage 띄움
+    #    return render(request, 'course/detail.html', {'subject': subject})

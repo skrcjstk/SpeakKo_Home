@@ -3,11 +3,9 @@
 <li {% if active_link == "course" %}class="dropdown"{% endif %}>
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">과정안내<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
-
 		<li><a href="{% url 'course:index' %}">전체코스</a></li>
-
-		<li><a href="{% url 'content' %}">컨텐츠</a></li>
-	    <li><a href="{% url 'teacher' %}">선생님</a></li>
+		<li><a href="{% url 'course:index' %}">컨텐츠</a></li>
+	    <li><a href="{% url 'course:teacher' %}">선생님</a></li>
   </ul>
 </li>
 

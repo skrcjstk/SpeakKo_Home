@@ -24,15 +24,9 @@
 
 {% block scripts %}
 <ul>
-  {% for subject in all_subject %}
+  {% for subject in object_list %}
   <li><a href="/course/{{ subject.id }}/"> {{ subject.class_title }} </a></li>
-    if subject.content[0] == 1
-
-
   {% endfor%}
-
-
-
 </ul>
 {% endblock scripts %}
 

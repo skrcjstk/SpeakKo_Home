@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^lookaround/$', views.LookAroundPage.as_view(), name='lookaround'),
     url(r'^course/', include('course.urls', namespace='course')),
-	#url(r'^courseall/$', views.CourseAllPage.as_view(), name='courseall'),
+    url(r'^community/', include('community.urls', namespace='community')),
 
 	url(r'^content/$', views.ContentPage.as_view(), name='content'),
 	url(r'^teacher/$', views.TeacherPage.as_view(), name='teacher'),

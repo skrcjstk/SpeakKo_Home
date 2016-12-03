@@ -29,16 +29,20 @@
 <div id="sec2" class="text-page">
   <div class="container">
     <div class="col">
-      
-      {% for notification in notification_list %}
+      {%if object_list %}
+      {% for notification in object_list %}
         <div class="col-md-3">
         <div class="jumbotron">
           <img class="img centered" src="{% static 'site/img/profile/park.png' %}" alt="profile pic">
           <h5>Notification1 title</h5>
+          <h1> {{notification.title}}</h1>
           <p><a class="btn btn-primary centered" href="#" role="button">View details &raquo;</a></p>
         </div>
         </div>  
       {% endfor%}
+      {% else %}
+      <h1> No noti</h1>
+      {% endif %}
 
     </div>
   </div>

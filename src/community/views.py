@@ -8,7 +8,7 @@ from .models import Notification
 
 # Create your views here.
 
-class NotificationView(generic.TemplateView):
+class NotificationView(generic.ListView):
 	template_name = "community/notification.html"
-	def getqueryset(self):
+	def get_queryset(self):
 		return Notification.objects.all()

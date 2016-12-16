@@ -99,11 +99,30 @@ WSGI_APPLICATION = 'SpeakKo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+
+DATABASE_ROUTERS = ['SpeakKo.DBRouter.DatabaseAppsRouter']
+DATABASE_APPS_MAPPING = {'course':'courseDB', 'community':'communityDB'}
+
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in
     # os.environ
-    'default': env.db(),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3'
+
+    },
+    
+    'communityDB': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'communityDB',
+    },
+
+    'courseDB': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'courseDB',
+    }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/

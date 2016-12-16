@@ -14,7 +14,7 @@ urlpatterns = [
 
 
 	url(r'^content/$', views.ContentPage.as_view(), name='content'),
-	url(r'^teacher/$', views.TeacherPage.as_view(), name='teacher'),
+	#url(r'^teacher/$', views.TeacherPage.as_view(), name='teacher'),
 
     url(r'^registration/$', views.RegistrationPage.as_view(), name='registration'),
     url(r'^leveltest/$', views.LevelTestPage.as_view(), name='leveltest'),

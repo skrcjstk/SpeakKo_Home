@@ -8,16 +8,25 @@ class IndexView(generic.ListView):
     template_name = "course/index.html"
     context_object_name = "all_subjects"
     def get_queryset(self):
-        return Subject.objects.all()
+        return Subject.objects.order_by('class_level')
+        #return Subject.objects.all()
 
 class DetailView(generic.DeleteView):
     model = Subject
     template_name = 'course/detail.html'
 
+
+class CategoryView(generic.ListView):
+    template_name = "course/category.html"
+    context_object_name = "all_subjects"
+    def get_queryset(self):
+        return Subject.objects.order_by('class_category')
+        #return Subject.objects.all()
+
+
 class TeacherIndexView(generic.ListView):
     template_name = "course/teacher.html"
     context_object_name = "all_teachers"
-
     def get_queryset(self):
         return Teacher.objects.all()
 

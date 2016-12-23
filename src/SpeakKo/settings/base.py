@@ -36,10 +36,13 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                #'django.core.context_processors.request',
+
             ],
         },
     },
 ]
+
 
 # Use 12factor inspired environment variables or from a file
 import environ
@@ -62,7 +65,20 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+BOWER_COMPONENTS_ROOT = join(BASE_DIR, 'components')
+
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'bootstrap'
+)
+
+SITE_ID = 1
+STATICFILES_FINDERS = (
+    'djangobower.finders.BowerFinder',
+)
 INSTALLED_APPS = (
+    'django.contrib.sites',
     'django.contrib.auth',
     'django_admin_bootstrapped',
     'django.contrib.admin',
@@ -78,8 +94,13 @@ INSTALLED_APPS = (
     'profiles',
     'accounts',
     'course',
+    'todo',
+    'schedule',
+    'djangobower',
 
 )
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,3 +161,20 @@ LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
 LOGIN_URL = reverse_lazy("accounts:login")
 
 THUMBNAIL_EXTENSION = 'png'     # Or any extn for your thumbnails
+
+# Restrict access to todo lists/views to `is_staff()` users.
+# False here falls back to `is_authenticated()` users.
+TODO_STAFF_ONLY = True
+
+# If you use the "public" ticket filing option, to whom should these tickets be assigned?
+# Must be a valid username in your system. If unset, unassigned tickets go to "Anyone."
+TODO_DEFAULT_ASSIGNEE = 'johndoe'
+
+# If you use the "public" ticket filing option, to which list should these tickets be saved?
+# Defaults to first list found, which is probably not what you want!
+TODO_DEFAULT_LIST_ID = 23
+
+# If you use the "public" ticket filing option, to which *named URL* should the user be
+# redirected after submitting? (since they can't see the rest of the ticket system).
+# Defaults to "/"
+TODO_PUBLIC_SUBMIT_REDIRECT = 'dashboard'
